@@ -1,6 +1,6 @@
 class AccessAuth {
-  int _accessAuth = -1;
-  String _accessAuthName = "";
+  int? _accessAuth;
+  String? _accessAuthName;
 
   AccessAuth({int accessAuth = -1, String accessAuthName = ""}) {
     _accessAuth = accessAuth;
@@ -11,9 +11,9 @@ class AccessAuth {
     return [1, 2, 3, 4, 5, 6, 7, 8, 9];
   }
 
-  int get accessAuth => _accessAuth;
+  int get accessAuth => _accessAuth!;
 
-  String get accessAuthName => _accessAuthName;
+  String get accessAuthName => _accessAuthName!;
 
   set accessAuthName(String value) {
     _accessAuthName = value;

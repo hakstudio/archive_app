@@ -1,7 +1,7 @@
 import 'package:archive_app/model/access_auth.dart';
 import 'package:archive_app/view/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:archive_app/model/document_item.dart';
+import 'package:archive_app/model/document.dart';
 
 class ListDocumentsView extends StatefulWidget {
   ListDocumentsView({super.key});
@@ -19,7 +19,7 @@ class _ListDocumentsViewState extends State<ListDocumentsView> {
   final uploadedByNameOrTcController = TextEditingController();
   final editedByNameOrTcController = TextEditingController();
 
-  List<DocumentItem> documentItemList = [];
+  List<Document> documentItemList = [];
   String erisimYetkisiValue = "";
 
   @override
@@ -30,7 +30,7 @@ class _ListDocumentsViewState extends State<ListDocumentsView> {
 
   @override
   Widget build(BuildContext context) {
-    DocumentItem item = DocumentItem();
+    Document item = Document();
     item.docId = 1;
     item.docName = "Doküman";
     item.accessAuth = 3;

@@ -1,19 +1,23 @@
 import 'package:archive_app/model/access_auth.dart';
-import 'package:archive_app/model/document_item.dart';
+import 'package:archive_app/model/document.dart';
 import 'package:archive_app/model/user.dart';
+import 'package:archive_app/view/edit_user_view.dart';
 import 'package:archive_app/viewmodel/convert_vm.dart';
+import 'package:archive_app/viewmodel/navigator_vm.dart';
 import 'package:flutter/material.dart';
 import 'dart:html' as html;
 
 import 'package:flutter/services.dart';
 
 class Widgets {
-  static Widget text(String text,
+  static Widget text(String? text,
       {double size = 15,
       bool bold = false,
       double padding = 8.0,
       TextAlign textAlign = TextAlign.center}) {
     var fontWeight = bold ? FontWeight.bold : FontWeight.normal;
+    if(text==null)
+      text="null";
     return Padding(
       padding: EdgeInsets.all(padding),
       child: Text(
@@ -171,14 +175,14 @@ class Widgets {
     );
   }
 
-  static Widget listDocListView(List<DocumentItem> documentItemList) {
+  static Widget listDocListView(List<Document> documentItemList) {
     return SizedBox(
       width: 300,
       child: Expanded(
         child: ListView.builder(
           itemCount: documentItemList.length,
           itemBuilder: (context, index) {
-            DocumentItem item = documentItemList[index];
+            Document item = documentItemList[index];
             return Card(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -273,39 +277,45 @@ class Widgets {
           itemCount: userList.length,
           itemBuilder: (context, index) {
             User user = userList[index];
-            return Card(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Row(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Widgets.text("TC Kimlik Numarası"),
-                            Widgets.text("Adı"),
-                            Widgets.text("Soyadı"),
-                            Widgets.text("Erişim Yetkisi"),
-                            Widgets.text("Oluşturan"),
-                            Widgets.text("Oluşturan TC"),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Widgets.text(user.tc.toString()),
-                            Widgets.text(user.name),
-                            Widgets.text(user.surname),
-                            Widgets.text(user.accessAuth.toString()),
-                            Widgets.text(user.createdBy),
-                            Widgets.text(user.createdByTc.toString()),
-                          ],
-                        )
-                      ],
-                    ),
-                  ],
+            return InkWell(onTap: () {
+              NavigatorVM.push(context, EditUserView(user: user,));
+            },
+              child: Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Widgets.text("ID"),
+                              Widgets.text("TC Kimlik Numarası"),
+                              Widgets.text("Adı"),
+                              Widgets.text("Soyadı"),
+                              Widgets.text("Erişim Yetkisi"),
+                              Widgets.text("Oluşturan"),
+                              Widgets.text("Oluşturan TC"),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Widgets.text(user.id.toString()),
+                              Widgets.text(user.tc.toString()),
+                              Widgets.text(user.name),
+                              Widgets.text(user.surname),
+                              Widgets.text(user.accessAuth.toString()),
+                              Widgets.text(user.createdBy??"Bilinmiyor"),
+                              Widgets.text(user.createdByTc==0?"Bilinmiyor":user.createdByTc.toString()),
+                            ],
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             );

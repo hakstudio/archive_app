@@ -1,4 +1,6 @@
+import 'package:archive_app/view/archive_view.dart';
 import 'package:archive_app/view/widgets.dart';
+import 'package:archive_app/viewmodel/navigator_vm.dart';
 import 'package:flutter/material.dart';
 
 class LoginView extends StatelessWidget {
@@ -28,6 +30,7 @@ class LoginView extends StatelessWidget {
                   String password = passwordController.value.text;
 
                   if (username.isNotEmpty && password.isNotEmpty) {}
+                  NavigatorVM.push(context, ArchiveView());
                 },
               )
             ],
