@@ -2,6 +2,8 @@
 
 Flutter tabanlı bir belge arşivleme ve kullanıcı yönetim uygulaması. Bu uygulama, belgeleri yönetmek, erişim haklarını belirlemek ve bir REST API aracılığıyla kullanıcı kimlik doğrulama işlemlerini gerçekleştirmek için kapsamlı bir arayüz sunar.
 
+**Arka Uç (Backend) Deposu:** Bu projenin REST API arka ucu Spring Boot ile geliştirilmiştir. Kaynak kodlarına buradan ulaşabilirsiniz: [hakstudio/archiveapp](https://github.com/hakstudio/archiveapp)
+
 ## Özellikler
 
 - **Kullanıcı Doğrulama:** Güvenli giriş işlevi (`LoginView`).

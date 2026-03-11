@@ -2,6 +2,8 @@
 
 A Flutter-based document archiving and user management application. This application provides a comprehensive interface for managing documents, assigning access rights, and handling user authentication through a REST API.
 
+**Backend Repository:** The REST API backend for this project is built with Spring Boot. You can find its source code here: [hakstudio/archiveapp](https://github.com/hakstudio/archiveapp)
+
 ## Features
 
 - **User Authentication:** Secure login functionality (`LoginView`).
